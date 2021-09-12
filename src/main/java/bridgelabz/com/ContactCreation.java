@@ -167,5 +167,17 @@ public class ContactCreation {
                 }
         }
     }
+        public int searchName boolean contactList;
+        (List<ContactInfo> contactList, String searchName) {
+            try {
+                for (int index = 0; index < contactList.size(); index++) {
+                    if (contactList.get(index).getFirstName().equals(searchName))
+                        return index;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            return -1;
+        }
     }
 }
