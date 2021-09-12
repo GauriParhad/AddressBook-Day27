@@ -232,5 +232,24 @@ public class ContactCreation {
             }
             return -1;
         }
+
+        private void searchAcrossCity(String contactsInCity) {
+            for (String keyOfBook : addressBooks.keySet()) {
+                addressBooks.get(keyOfBook)
+                        .stream()
+                        .filter(contactInfo -> contactsInCity.equals(contactInfo.getCity()))
+                        .forEach(System.out::println);
+            }
+        }
+
+        private void searchAcrossState(String contactsInState) {
+            for (String keyOfBook : addressBooks.keySet()) {
+                addressBooks.get(keyOfBook)
+                        .stream()
+                        .filter(contactInfo -> contactsInState.equals(contactInfo.getState()))
+                        .forEach(System.out::println);
+            }
+        }
+    }
     }
 }
