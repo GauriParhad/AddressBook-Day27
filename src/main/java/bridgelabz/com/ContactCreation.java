@@ -204,7 +204,6 @@ public class ContactCreation {
                 System.out.println(e);
             }
         }
-
         private void deleteContact(List<ContactInfo> contactList) {
             try {
                 System.out.println("Enter a name you want to delete...");
@@ -234,22 +233,39 @@ public class ContactCreation {
         }
 
         private void searchAcrossCity(String contactsInCity) {
-            for (String keyOfBook : addressBooks.keySet()) {
-                addressBooks.get(keyOfBook)
-                        .stream()
-                        .filter(contactInfo -> contactsInCity.equals(contactInfo.getCity()))
-                        .forEach(System.out::println);
+            try {
+                for (String keyOfBook : addressBooks.keySet()) {
+                    long noOfContactsInCity = addressBooks.get(keyOfBook)
+                            .stream()
+                            .filter(contactInfo -> contactsInCity.equals(contactInfo.getCity()))
+                            .count();
+                    System.out.println("Number of contact in city = " + noOfContactsInCity);
+                    addressBooks.get(keyOfBook)
+                            .stream()
+                            .filter(contactInfo -> contactsInCity.equals(contactInfo.getCity()))
+                            .forEach(System.out::println);
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
 
         private void searchAcrossState(String contactsInState) {
-            for (String keyOfBook : addressBooks.keySet()) {
-                addressBooks.get(keyOfBook)
-                        .stream()
-                        .filter(contactInfo -> contactsInState.equals(contactInfo.getState()))
-                        .forEach(System.out::println);
+            try {
+                for (String keyOfBook : addressBooks.keySet()) {
+                    long noOfContactsInState = addressBooks.get(keyOfBook)
+                            .stream()
+                            .filter(contactInfo -> contactsInState.equals(contactInfo.getState()))
+                            .count();
+                    System.out.println("Number of contact in city = " + noOfContactsInState);
+                    addressBooks.get(keyOfBook)
+                            .stream()
+                            .filter(contactInfo -> contactsInState.equals(contactInfo.getState()))
+                            .forEach(System.out::println);
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
-    }
     }
 }
